@@ -5,11 +5,10 @@ inputs:
     description: "github token"
     required: true
 runs:
-  if: github.event_name == 'schedule'
   using: "composite"
   steps:
     - name: "Checkout commit"
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash

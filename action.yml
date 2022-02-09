@@ -42,6 +42,20 @@ runs:
           echo "This module has not yet been updated to support the context.tf pattern! Please update in order to support automatic updates."
         fi
 
+    - name: "Output pull request body"
+      shell: bash
+      run: |
+        COMMENT_BODY=$(cat << EOF
+        ## what
+        This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
+        ## why
+        To support all the features of the `context` interface.
+        EOF
+        )
+        echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
+        echo "$COMMENT_BODY" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'
       uses: actions/github-script@v4
@@ -62,11 +76,7 @@ runs:
             title: "Update context.tf",
             head: "auto-update/context.tf",
             base: prBaseRef,
-            body: |-
-              ## what
-              This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
-              ## why
-              To support all the features of the `context` interface.
+            body: ${{ env.COMMENT_BODY }}
           });
         #delete-branch: true
         #labels: |

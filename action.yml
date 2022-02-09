@@ -72,7 +72,7 @@ runs:
 
           // make emoji response to comment
           github.pulls.create({
-            owner,
+            "cloudpossebot",
             repo,
             title: "Update context.tf",
             head: "auto-update/context.tf",

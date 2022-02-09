@@ -47,9 +47,9 @@ runs:
       run: |
         COMMENT_BODY=$(cat << EOF
         ## what
-        This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
+        This is an auto-generated PR that updates the \`context.tf\` file to the latest version from \`cloudposse/terraform-null-label\`
         ## why
-        To support all the features of the `context` interface.
+        To support all the features of the \`context\` interface.
         EOF
         )
         echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
@@ -76,7 +76,7 @@ runs:
             title: "Update context.tf",
             head: "auto-update/context.tf",
             base: prBaseRef,
-            body: ${{ env.COMMENT_BODY }}
+            body: "${{ env.COMMENT_BODY }}"
           });
         #delete-branch: true
         #labels: |

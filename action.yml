@@ -33,6 +33,7 @@ runs:
             git branch -avv
             git checkout -b auto-update/context.tf
             git branch -avv
+            git pull
             # committing changes
             git config --global user.name 'cloudpossebot'
             git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'

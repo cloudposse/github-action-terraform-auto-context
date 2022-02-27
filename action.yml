@@ -28,6 +28,7 @@ runs:
             make github/init/context.tf
             make readme/build
             # moving to new branch to commit changes
+            git branch -avv
             git checkout -b auto-update/context.tf
             # committing changes
             git config --global user.name 'cloudpossebot'
@@ -57,6 +58,12 @@ runs:
         echo "$COMMENT_BODY" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
 
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
+
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'
       uses: actions/github-script@v4
@@ -70,7 +77,7 @@ runs:
           const prDetails = await github.request(`GET ${prUrl}`);
           let prBaseRef = prDetails.data.base.ref;
 
-          // make emoji response to comment
+          // create pull request
           github.pulls.create({
             "cloudpossebot",
             repo,

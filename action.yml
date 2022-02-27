@@ -9,6 +9,8 @@ runs:
   steps:
     - name: "Checkout commit"
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash
@@ -30,6 +32,7 @@ runs:
             # moving to new branch to commit changes
             git branch -avv
             git checkout -b auto-update/context.tf
+            git branch -avv
             # committing changes
             git config --global user.name 'cloudpossebot'
             git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'

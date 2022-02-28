@@ -65,6 +65,16 @@ runs:
         echo "$COMMENT_BODY" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
 
+    - name: Parse Repo Name
+      shell: bash
+      env:
+        REPO_NAME: ${{ github.repository }}
+      run: |
+        IFS='/' read -ra REPO_NAME_SPLIT <<< "$REPO_NAME"
+        echo "REPO_NAME<<EOF" >> $GITHUB_ENV
+        echo "${REPO_NAME_SPLIT[1]}" >> GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
     - name: Dump GitHub context
       shell: bash
       env:
@@ -89,7 +99,7 @@ runs:
           // create pull request
           github.pulls.create({
             owner: "${{ github.repository_owner }}",
-            repo: "${{ github.repository }}",
+            repo: "${{ env.REPO_NAME }}",
             title: "Update context.tf",
             head: "auto-update/context.tf",
             base: "${{ github.ref }}",

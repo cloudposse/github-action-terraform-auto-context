@@ -35,6 +35,7 @@ runs:
             git branch -avv
             # handle case where upstream branch already exists
             git branch -u origin/auto-update/context.tf
+            git fetch origin
             git pull || :
             # committing changes
             git config --global user.name 'cloudpossebot'

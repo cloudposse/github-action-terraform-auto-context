@@ -67,24 +67,23 @@ runs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
         echo "$GITHUB_CONTEXT"
+        echo "$GITHUB_ENV"
 
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'
       uses: actions/github-script@v4
       with:
         script: |
-          // extract information about repo
-          const {owner, repo} = context.schedule
-
           // extract the base branch name that's being merged into
           const prUrl = context.payload.schedule.pull_request.url;
           const prDetails = await github.request(`GET ${prUrl}`);
           let prBaseRef = prDetails.data.base.ref;
+          console.log(prBaseRef);
 
           // create pull request
           github.pulls.create({
             "cloudpossebot",
-            repo,
+            github.repository,
             title: "Update context.tf",
             head: "auto-update/context.tf",
             base: prBaseRef,

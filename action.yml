@@ -78,9 +78,14 @@ runs:
       shell: bash
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
+        ENVS: ${{ toJson(env) }}
       run: |
+        echo "github_context:"
         echo "$GITHUB_CONTEXT"
+        echo "github_env:"
         echo "$GITHUB_ENV"
+        echo "github_envs:"
+        echo "$ENVS"
 
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'

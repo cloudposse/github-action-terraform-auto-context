@@ -83,7 +83,7 @@ runs:
           // create pull request
           github.pulls.create({
             "cloudpossebot",
-            github.repository,
+            "${{ github.repository }}",
             title: "Update context.tf",
             head: "auto-update/context.tf",
             base: prBaseRef,

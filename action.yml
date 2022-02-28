@@ -31,7 +31,7 @@ runs:
             make readme/build
             # moving to new branch to commit changes
             git branch -avv
-            git checkout -b auto-update/context.tf
+            git checkout -b auto-update/context
             git branch -avv
             git pull
             # committing changes

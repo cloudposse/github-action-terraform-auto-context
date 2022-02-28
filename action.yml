@@ -33,10 +33,6 @@ runs:
             git branch -avv
             git checkout -b auto-update/context.tf
             git branch -avv
-            # handle case where upstream branch already exists
-            #git branch -u origin/auto-update/context.tf
-            #git fetch origin
-            #git pull || :
             # committing changes
             git config --global user.name 'cloudpossebot'
             git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'
@@ -58,7 +54,7 @@ runs:
         ### why
         #To support all the features of the \`context\` interface.
         COMMENT_BODY=$(cat << EOF
-        This is an auto-generated PR that updates the context.tf file to the latest version from cloudposse/terraform-null-label
+        This is an auto-generated PR that updates the context.tf file to the latest version from cloudposse/terraform-null-label.
         EOF
         )
         echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
@@ -75,20 +71,6 @@ runs:
         echo "REPO_NAME<<EOF" >> $GITHUB_ENV
         echo "${REPO_NAME_SPLIT[1]}" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
-        #echo "REPO_NAME=${REPO_NAME_SPLIT[1]}" >> GITHUB_ENV
-
-    - name: Dump GitHub context
-      shell: bash
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-        ENVS: ${{ toJson(env) }}
-      run: |
-        echo "github_context:"
-        echo "$GITHUB_CONTEXT"
-        echo "github_env:"
-        echo "$GITHUB_ENV"
-        echo "github_envs:"
-        echo "$ENVS"
 
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'

@@ -82,7 +82,8 @@ runs:
           //const prUrl = context.payload.schedule.pull_request.url;
           //const prDetails = await github.request(`GET ${prUrl}`);
           //let prBaseRef = prDetails.data.base.ref;
-          //console.log(prBaseRef);
+          let prBaseRef = context.ref;
+          console.log(prBaseRef);
           console.log(context);
 
           // create pull request

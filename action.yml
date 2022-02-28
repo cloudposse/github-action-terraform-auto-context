@@ -31,7 +31,7 @@ runs:
             make readme/build
             # moving to new branch to commit changes
             git branch -avv
-            git checkout -b auto-update/context
+            git checkout -b auto-update/context.tf
             git branch -avv
             git pull
             # committing changes
@@ -39,7 +39,7 @@ runs:
             git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'
             git add -A
             git commit -m "Update context.tf from origin source"
-            git push --set-upstream origin auto-update/context
+            git push --set-upstream origin auto-update/context.tf
             # setting flag to create pull request for new branch
             echo "::set-output name=create_pull_request::true"
           fi

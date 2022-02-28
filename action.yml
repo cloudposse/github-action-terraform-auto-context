@@ -88,11 +88,11 @@ runs:
 
           // create pull request
           github.pulls.create({
-            owner: "cloudpossebot",
+            owner: "${{ github.repository_owner }}",
             repo: "${{ github.repository }}",
             title: "Update context.tf",
             head: "auto-update/context.tf",
-            base: prBaseRef,
+            base: "${{ github.ref }}",
             body: "${{ env.COMMENT_BODY }}"
           });
         #delete-branch: true

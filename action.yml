@@ -87,14 +87,14 @@ runs:
           console.log(context);
 
           // create pull request
-          //github.pulls.create({
-          //  owner: "cloudpossebot",
-          //  repo: "${{ github.repository }}",
-          //  title: "Update context.tf",
-          //  head: "auto-update/context.tf",
-          //  base: prBaseRef,
-          //  body: "${{ env.COMMENT_BODY }}"
-          //});
+          github.pulls.create({
+            owner: "cloudpossebot",
+            repo: "${{ github.repository }}",
+            title: "Update context.tf",
+            head: "auto-update/context.tf",
+            base: prBaseRef,
+            body: "${{ env.COMMENT_BODY }}"
+          });
         #delete-branch: true
         #labels: |
         #  auto-update

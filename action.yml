@@ -52,6 +52,7 @@ runs:
         ### why
         #To support all the features of the \`context\` interface.
         COMMENT_BODY=$(cat << EOF
+        ### what
         This is an auto-generated PR that updates the context.tf file to the latest version from cloudposse/terraform-null-label.
         EOF
         )
@@ -59,7 +60,7 @@ runs:
         echo "$COMMENT_BODY" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
 
-    - name: Parse Repo Name
+    - name: "Parse Repo Name"
       shell: bash
       env:
         FULL_REPO_NAME: ${{ github.repository }}

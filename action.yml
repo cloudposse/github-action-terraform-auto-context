@@ -47,12 +47,12 @@ runs:
     - name: "Output pull request body"
       shell: bash
       run: |
+        # Original comment:
         ### what
         #This is an auto-generated PR that updates the \`context.tf\` file to the latest version from \`cloudposse/terraform-null-label\`
         ### why
         #To support all the features of the \`context\` interface.
         COMMENT_BODY=$(cat << EOF
-        ### what
         This is an auto-generated PR that updates the context.tf file to the latest version from cloudposse/terraform-null-label.
         EOF
         )

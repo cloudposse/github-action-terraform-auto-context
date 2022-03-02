@@ -11,7 +11,7 @@ runs:
     - name: "Checkout commit"
       uses: actions/checkout@v2
       with:
-        depth: 0
+        fetch-depth: 0
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash

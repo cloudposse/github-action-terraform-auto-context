@@ -20,7 +20,7 @@ runs:
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"
           echo "Checking for pre-existing ${BRANCH_NAME} branch."
-          if ! [[ git rev-parse --quiet --verify ${BRANCH_NAME} > /dev/null ]]; then
+          if [[ ! git rev-parse --quiet --verify ${BRANCH_NAME} > /dev/null ]]; then
             echo "Branch ${BRANCH_NAME} not found."
             echo "Fetching most recent version of context.tf to see if there is an update."
             curl -o context.tf -fsSL https://raw.githubusercontent.com/cloudposse/terraform-null-label/master/exports/context.tf

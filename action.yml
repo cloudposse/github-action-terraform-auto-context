@@ -1,5 +1,10 @@
 name: "github-action-terraform-auto-context"
 description: "Automaticaly open a pull request to update context.tf for Terraform projects"
+inputs:
+  branch-name:
+    description: "Name of branch to commit updated context.tf to"
+    required: false
+    default: "auto-update-context-dot-tf"
 runs:
   using: "composite"
   steps:
@@ -10,7 +15,7 @@ runs:
       shell: bash
       id: update
       env:
-        BRANCH_NAME: "auto-update-context-dot-tf"
+        BRANCH_NAME: ${{ inputs.branch-name }}
       run: |
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"
@@ -29,7 +34,7 @@ runs:
               make readme/build
               # moving to new branch to commit changes
               git branch -avv
-              git checkout -b auto-update/context.tf
+              git checkout -b ${BRANCH_NAME}
               git branch -avv
               # committing changes
               git config --global user.name 'cloudpossebot'
@@ -93,7 +98,7 @@ runs:
             owner: "${{ github.repository_owner }}",
             repo: "${{ env.REPO_NAME }}",
             title: "Update context.tf",
-            head: "auto-update/context.tf",
+            head: "${{ inputs.branch-name }}",
             base: "${{ github.ref }}",
             body: "${{ env.COMMENT_BODY }}"
           });

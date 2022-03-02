@@ -4,7 +4,7 @@ inputs:
   branch-name:
     description: "Name of branch to commit updated context.tf to"
     required: false
-    default: "auto-update-context-dot-tf"
+    default: "auto-update/context.tf"
 runs:
   using: "composite"
   steps:
@@ -22,9 +22,6 @@ runs:
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"
           echo "Checking for pre-existing ${BRANCH_NAME} branch."
-          git --version
-          git branch -avv
-          git show-ref
           if [[ ! $(git show-branch remotes/origin/${BRANCH_NAME}) ]]; then
             echo "Branch ${BRANCH_NAME} not found."
             echo "Fetching most recent version of context.tf to see if there is an update."
@@ -38,9 +35,7 @@ runs:
               make github/init/context.tf
               make readme/build
               # moving to new branch to commit changes
-              git branch -avv
               git checkout -b ${BRANCH_NAME}
-              git branch -avv
               # committing changes
               git config --global user.name 'cloudpossebot'
               git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'

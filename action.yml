@@ -22,6 +22,9 @@ runs:
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"
           echo "Checking for pre-existing ${BRANCH_NAME} branch."
+          git --version
+          git branch -avv
+          git show-ref
           if [[ ! $(git rev-parse --quiet --verify origin/${BRANCH_NAME} > /dev/null) ]]; then
             echo "Branch ${BRANCH_NAME} not found."
             echo "Fetching most recent version of context.tf to see if there is an update."

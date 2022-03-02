@@ -25,7 +25,7 @@ runs:
           git --version
           git branch -avv
           git show-ref
-          if [[ ! $(git rev-parse --quiet --verify origin/${BRANCH_NAME} > /dev/null) ]]; then
+          if [[ ! $(git rev-parse --quiet --verify refs/remotes/origin/${BRANCH_NAME} > /dev/null) ]]; then
             echo "Branch ${BRANCH_NAME} not found."
             echo "Fetching most recent version of context.tf to see if there is an update."
             curl -o context.tf -fsSL https://raw.githubusercontent.com/cloudposse/terraform-null-label/master/exports/context.tf

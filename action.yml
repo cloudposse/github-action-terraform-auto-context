@@ -86,12 +86,7 @@ runs:
       with:
         script: |
           // extract the base branch name that's being merged into
-          //const prUrl = context.payload.schedule.pull_request.url;
-          //const prDetails = await github.request(`GET ${prUrl}`);
-          //let prBaseRef = prDetails.data.base.ref;
           let prBaseRef = context.ref;
-          console.log(prBaseRef);
-          console.log(context);
 
           // create pull request
           github.pulls.create({

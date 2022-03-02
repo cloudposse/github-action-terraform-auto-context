@@ -10,7 +10,7 @@ runs:
       shell: bash
       id: update
       env:
-        BRANCH_NAME: "auto-update/context.tf"
+        BRANCH_NAME: "auto-update-context-dot-tf"
       run: |
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"

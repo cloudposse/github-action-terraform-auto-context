@@ -1,0 +1,11 @@
+name: "auto-context"
+on:
+  schedule:
+  # Update context.tf nightly
+  - cron:  '32 11 * * *'
+
+jobs:
+  auto-context:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cloudposse/github-action-terraform-auto-context@main

@@ -14,8 +14,6 @@ runs:
   steps:
     - name: "Checkout commit"
       uses: actions/checkout@v2
-      #with:
-      #  fetch-depth: 0
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash
@@ -60,7 +58,6 @@ runs:
     - name: "Output pull request body"
       shell: bash
       run: |
-        #PR_BODY=$(cat ${{ inputs.app_checkout_path }}/pr_body.txt)
         PR_BODY=$(cat ${GITHUB_ACTION_PATH}/pr_body.txt)
         echo PR_BODY=${PR_BODY} >> $GITHUB_ENV
 
@@ -89,7 +86,3 @@ runs:
             base: "${{ github.ref }}",
             body: "${{ env.PR_BODY }}"
           });
-        #delete-branch: true
-        #labels: |
-        #  auto-update
-        #  context

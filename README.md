@@ -70,6 +70,23 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 Copy the `sample_workflow_file.yaml` file from this repository into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
 This will cause Auto-context functionality to execute daily at the time specified by the `cron` option (all times are UTC).
 
+If you'd like to modify the schedule of the Auto-context action, you can follow the standard [cron](https://en.wikipedia.org/wiki/Cron) syntax, as detailed below:
+
+```
+schedule:
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+
+# Update README.md nightly at 4am UTC
+- cron:  '0 4 * * *'
+```
+
 
 
 
@@ -89,11 +106,10 @@ Are you using this project or any of our other projects? Consider [leaving a tes
 
 Check out these related projects.
 
+- [GitHub Action Auto-format](https://github.com/cloudposse/github-action-auto-format) - Add standard files to a repo and keep its README up to date
 - [GitHub Action Auto-release](https://github.com/cloudposse/github-action-auto-release) - Automatically draft release notes for a new release when merges are made into the default branch
-- [GitHub Action Terraform Auto-format](https://github.com/cloudposse/github-action-terraform-auto-format) - Automatically format all Terraform files
-- [GitHub Action Auto-readme](https://github.com/cloudposse/github-action-auto-readme) - Automatically regenerate the README.md file
 - [GitHub Action Terraform CI](https://github.com/cloudposse/github-action-terraform-ci) - Full suite of Terraform CI actions, along with chatops support
-- [GitHub Action Validate Codeowners](https://github.com/cloudposse/github-action-validate-codeowners) - GitHub Action to validate conents of CODEOWNERS file
+- [GitHub Action Validate CODEOWNERS](https://github.com/cloudposse/github-action-validate-codeowners) - GitHub Action to validate conents of CODEOWNERS file
 
 ## Help
 

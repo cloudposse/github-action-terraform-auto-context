@@ -1,8 +1,8 @@
 name: "auto-context"
 on:
   schedule:
-  # Update context.tf nightly
-  - cron:  '32 11 * * *'
+  # Update context.tf nightly (assuming your time zone is GMT-7)
+  - cron:  '0 7 * * *'
 
 jobs:
   auto-context:

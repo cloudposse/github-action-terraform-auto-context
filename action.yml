@@ -17,11 +17,11 @@ runs:
       with:
         fetch-depth: 0
 
-    - name: "Checkout github-action-auto-context repo to load script locally on runner"
-      uses: actions/checkout@v2
-      with:
-        repository: cloudposse/github-action-terraform-auto-context@main
-        path: ${{ inputs.app_checkout_path }}
+#    - name: "Checkout github-action-auto-context repo to load script locally on runner"
+#      uses: actions/checkout@v2
+#      with:
+#        repository: cloudposse/github-action-terraform-auto-context@main
+#        path: ${{ inputs.app_checkout_path }}
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash

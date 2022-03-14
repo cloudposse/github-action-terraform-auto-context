@@ -1,4 +1,4 @@
-### what
-This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
-### why
+### what\n
+This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`\n
+### why\n
 To support all the features of the `context` interface.

@@ -68,7 +68,7 @@ runs:
       run: |
         #PR_BODY=$(cat ${{ inputs.app_checkout_path }}/pr_body.txt)
         PR_BODY=$(cat ${GITHUB_ACTION_PATH}/pr_body.txt)
-        echo PR_BODY=${PR_BODY@Q} >> $GITHUB_ENV
+        echo PR_BODY=${PR_BODY} >> $GITHUB_ENV
 
     - name: "Parse Repo Name"
       shell: bash

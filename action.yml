@@ -1,6 +1,10 @@
-name: "github-action-terraform-auto-context"
+name: "github-action-auto-context"
 description: "Automaticaly open a pull request to update context.tf for Terraform projects"
 inputs:
+  app_checkout_path:
+    description: 'The path to checkout the application repository to during the workflow run'
+    default: ./github-action-auto-context
+    required: false
   branch-name:
     description: "Name of branch to commit updated context.tf to"
     required: false
@@ -12,6 +16,12 @@ runs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
+    - name: "Checkout github-action-auto-context repo to load script locally on runner"
+      uses: actions/checkout@v2
+      with:
+        repository: cloudposse/github-action-terraform-auto-context@main
+        path: ${{ inputs.app_checkout_path }}
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       shell: bash
@@ -56,29 +66,17 @@ runs:
     - name: "Output pull request body"
       shell: bash
       run: |
-        # Original comment:
-        ### what
-        #This is an auto-generated PR that updates the \`context.tf\` file to the latest version from \`cloudposse/terraform-null-label\`
-        ### why
-        #To support all the features of the \`context\` interface.
-        COMMENT_BODY=$(cat << EOF
-        This is an auto-generated PR that updates the context.tf file to the latest version from cloudposse/terraform-null-label.
-        EOF
-        )
-        echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
-        echo "$COMMENT_BODY" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
+        #PR_BODY=$(cat ${{ inputs.app_checkout_path }}/pr_body.txt)
+        PR_BODY=$(cat ${GITHUB_ACTION_PATH}/pr_body.txt)
+        echo PR_BODY=${PR_BODY@Q} >> $GITHUB_ENV
 
     - name: "Parse Repo Name"
       shell: bash
       env:
         FULL_REPO_NAME: ${{ github.repository }}
       run: |
-        IFS='/' read -ra REPO_NAME_SPLIT <<< "$FULL_REPO_NAME"
-        echo "${REPO_NAME_SPLIT[@]}"
-        echo "REPO_NAME<<EOF" >> $GITHUB_ENV
-        echo "${REPO_NAME_SPLIT[1]}" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
+        REPO_BASENAME=$(basename $FULL_REPO_NAME)
+        echo "REPO_NAME=$REPO_BASENAME" >> $GITHUB_ENV
 
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'
@@ -95,7 +93,7 @@ runs:
             title: "Update context.tf",
             head: "${{ inputs.branch-name }}",
             base: "${{ github.ref }}",
-            body: "${{ env.COMMENT_BODY }}"
+            body: "${{ env.PR_BODY }}"
           });
         #delete-branch: true
         #labels: |

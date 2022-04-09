@@ -22,9 +22,9 @@ if [[ -f context.tf ]]; then
       git config --global user.email "11232728+${BOT_NAME}@users.noreply.github.com"
       git add -A
       git commit -m "Update context.tf from origin source"
-      git push --set-upstream origin ${BRANCH_NAME}
+      #git push --set-upstream origin ${BRANCH_NAME}
       # setting flag to create pull request for new branch
-      #echo "::set-output name=create_pull_request::true"
+      echo "::set-output name=create_pull_request::true"
     fi
   else
     echo "Branch ${BRANCH_NAME} found."

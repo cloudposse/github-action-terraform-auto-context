@@ -1,7 +1,3 @@
-
-
-
-
 #
 # ONLY EDIT THIS FILE IN github.com/cloudposse/terraform-null-label
 # All other instances of this file should be a copy of that one
@@ -24,7 +20,7 @@
 # will be null, and `module.this.delimiter` will be `-` (hyphen).
 #
 
-madsfasdfodule "this" {
+module "this" {
   source  = "cloudposse/label/null"
   version = "0.25.0" # requires Terraform >= 0.13.0
 

@@ -12,19 +12,11 @@ if [[ -f context.tf ]]; then
     else
       # updating context.tf and documentation
       echo "context.tf file has changed. Update examples and rebuild README.md and commit everything to a new ${BRANCH_NAME} branch."
-      #make init
       make github/init/context.tf
-      #make readme/build
-      # moving to new branch to commit changes
-      #git checkout -b ${BRANCH_NAME}
-      # committing changes
-      #git config --global user.name "${BOT_NAME}"
-      #git config --global user.email "11232728+${BOT_NAME}@users.noreply.github.com"
-      #git add -A
-      #git commit -m "Update context.tf from origin source"
-      #git push --set-upstream origin ${BRANCH_NAME}
+      # The above make target adds a .build-harness file. Hopefully, no repository that runs this action actually wants to keep its .build-harness file.
+      rm .build-harness
       # setting flag to create pull request for new branch
-      echo "::set-output name=create_pull_request::true"
+      #echo "::set-output name=create_pull_request::true"
     fi
   else
     echo "Branch ${BRANCH_NAME} found."

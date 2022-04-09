@@ -4,6 +4,8 @@ if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv ./test/context.tf .
 fi
 
+ls -a
+
 if [[ -f context.tf ]]; then
   echo "Discovered existing context.tf!"
   echo "Checking for pre-existing ${BRANCH_NAME} branch."
@@ -28,6 +30,10 @@ else
   echo "This module has not yet been updated to support the context.tf pattern! Please update in order to support automatic updates."
 fi
 
+ls -a
+
 if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv context.tf ./test/
 fi
+
+ls -a

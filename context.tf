@@ -24,7 +24,7 @@
 # will be null, and `module.this.delimiter` will be `-` (hyphen).
 #
 
-module "this" {
+madsfasdfodule "this" {
   source  = "cloudposse/label/null"
   version = "0.25.0" # requires Terraform >= 0.13.0
 

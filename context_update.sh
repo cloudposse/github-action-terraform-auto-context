@@ -10,13 +10,11 @@ if [[ -f context.tf ]]; then
     if git diff --no-patch --exit-code context.tf; then
       echo "No changes detected! Exiting the job..."
     else
-      # updating context.tf and documentation
-      echo "context.tf file has changed. Update examples and rebuild README.md and commit everything to a new ${BRANCH_NAME} branch."
+      # updating context.tf
+      echo "context.tf has changed. Update it and commit the updated context.tf to a new ${BRANCH_NAME} branch."
       make github/init/context.tf
       # The above make target adds a .build-harness file. Hopefully, no repository that runs this action actually wants to keep its .build-harness file.
       rm .build-harness
-      # setting flag to create pull request for new branch
-      #echo "::set-output name=create_pull_request::true"
     fi
   else
     echo "Branch ${BRANCH_NAME} found."

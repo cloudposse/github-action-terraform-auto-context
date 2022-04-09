@@ -26,6 +26,7 @@ runs:
       env:
         BRANCH_NAME: ${{ inputs.branch-name }}
         BOT_NAME: ${{ inputs.bot-name }}
+        HOST_REPO: ${{ github.repository }}
 
     - name: Create Pull Request
       uses: cloudposse/actions/github/create-pull-request@0.30.0

@@ -1,14 +1,17 @@
 name: "github-action-auto-context"
 description: "Automaticaly open a pull request to update context.tf for Terraform projects"
 inputs:
-  app_checkout_path:
-    description: 'The path to checkout the application repository to during the workflow run'
-    default: ./github-action-auto-context
-    required: false
   branch-name:
     description: "Name of branch to commit updated context.tf to"
     required: false
     default: "auto-update/context.tf"
+  token:
+    description: "Token for authenticating to GitHub API server. No special permissions needed."
+    required: true
+  bot-name:
+    decription: "Username to write commits under"
+    required: false
+    default: "cloudpossebot"
 runs:
   using: "composite"
   steps:
@@ -20,6 +23,7 @@ runs:
       id: update
       env:
         BRANCH_NAME: ${{ inputs.branch-name }}
+        BOT_NAME: ${{ inputs.bot-name }}
       run: |
         if [[ -f context.tf ]]; then
           echo "Discovered existing context.tf!"
@@ -39,8 +43,8 @@ runs:
               # moving to new branch to commit changes
               git checkout -b ${BRANCH_NAME}
               # committing changes
-              git config --global user.name 'cloudpossebot'
-              git config --global user.email '11232728+cloudpossebot@users.noreply.github.com'
+              git config --global user.name "${BOT_NAME}"
+              git config --global user.email "11232728+${BOT_NAME}@users.noreply.github.com"
               git add -A
               git commit -m "Update context.tf from origin source"
               git push --set-upstream origin ${BRANCH_NAME}
@@ -49,40 +53,29 @@ runs:
             fi
           else
             echo "Branch ${BRANCH_NAME} found."
-            echo "Please merge pre-existing ${BRANCH_NAME} branch before rerunning this action."
+            echo "Please merge or delete pre-existing ${BRANCH_NAME} branch before rerunning this action."
           fi
         else
           echo "This module has not yet been updated to support the context.tf pattern! Please update in order to support automatic updates."
         fi
 
-    - name: "Output pull request body"
-      shell: bash
-      run: |
-        PR_BODY=$(cat ${GITHUB_ACTION_PATH}/pr_body.txt)
-        echo PR_BODY=${PR_BODY} >> $GITHUB_ENV
-
-    - name: "Parse Repo Name"
-      shell: bash
-      env:
-        FULL_REPO_NAME: ${{ github.repository }}
-      run: |
-        REPO_BASENAME=$(basename $FULL_REPO_NAME)
-        echo "REPO_NAME=$REPO_BASENAME" >> $GITHUB_ENV
-
     - name: Create Pull Request
       if: steps.update.outputs.create_pull_request == 'true'
-      uses: actions/github-script@v4
+      uses: cloudposse/actions/github/create-pull-request@0.30.0
       with:
-        script: |
-          // extract the base branch name that's being merged into
-          let prBaseRef = context.ref;
-
-          // create pull request
-          github.pulls.create({
-            owner: "${{ github.repository_owner }}",
-            repo: "${{ env.REPO_NAME }}",
-            title: "Update context.tf",
-            head: "${{ inputs.branch-name }}",
-            base: "${{ github.ref }}",
-            body: "${{ env.PR_BODY }}"
-          });
+        token: ${{ inputs.token }}
+        committer: '${{ inputs.bot-name }} <11232728+${{ inputs.bot-name }}@users.noreply.github.com>'
+        author: '${{ inputs.bot-name }} <11232728+${{ inputs.bot-name }}@users.noreply.github.com>'
+        commit-message: Update context.tf from origin source
+        title: Update context.tf
+        body: |-
+          ## what
+          This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
+          ## why
+          To support all the features of the `context` interface.
+        branch: auto-update/context.tf
+        base: main
+        delete-branch: true
+        labels: |
+          auto-update
+          context

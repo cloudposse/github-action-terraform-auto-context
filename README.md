@@ -2,7 +2,7 @@
 <!-- markdownlint-disable -->
 # GitHub Action Terraform Auto-context
 
-
+ [![Build Status](https://github.com/cloudposse/build-harness/workflows/docker/badge.svg?branch=master)](https://github.com/cloudposse/build-harness/actions?query=workflow%3Adocker) [![Latest Release](https://img.shields.io/github/release/cloudposse/build-harness.svg)](https://github.com/cloudposse/build-harness/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
@@ -67,7 +67,7 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-Copy the `sample_workflow_file.yaml` file from this repository into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
+Copy this repository's `.github/workflows/auto-context.yml` file into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
 This will cause Auto-context functionality to execute daily at the time specified by the `cron` option (all times are UTC).
 
 If you'd like to modify the schedule of the Auto-context action, you can follow the standard [cron](https://en.wikipedia.org/wiki/Cron) syntax, as detailed below:
@@ -87,8 +87,16 @@ schedule:
 - cron:  '0 4 * * *'
 ```
 
+## Quick Start
+
+Here's how to get started...
+1. Copy this repository's `.github/workflows/auto-context.yml` file into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
 
 
+## Examples
+
+Here are some real world examples:
+- [`github-action-auto-context`](https://github.com/cloudposse/github-action-auto-context/.github/workflows/auto-context.yml) - Cloud Posse's self-testing Auto-context GitHub Action
 
 
 
@@ -110,6 +118,15 @@ Check out these related projects.
 - [GitHub Action Auto-release](https://github.com/cloudposse/github-action-auto-release) - Automatically draft release notes for a new release when merges are made into the default branch
 - [GitHub Action Terraform CI](https://github.com/cloudposse/github-action-terraform-ci) - Full suite of Terraform CI actions, along with chatops support
 - [GitHub Action Validate CODEOWNERS](https://github.com/cloudposse/github-action-validate-codeowners) - Validate and lint contents of CODEOWNERS file
+
+
+## References
+
+For additional context, refer to some of these links.
+
+- [GitHub Action - Checkout](https://github.com/actions/checkout) - Checks out a repository under $GITHUB_WORKSPACE, so a workflow can access it
+- [Create Pull Request](https://github.com/peter-evans/create-pull-request) - Take all unpushed commits and modifications to the code and put it on a new branch with a PR already made
+
 
 ## Help
 

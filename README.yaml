@@ -7,9 +7,6 @@
 # Name of this project
 name: GitHub Action Terraform Auto-context
 
-# Logo for this project
-#logo: docs/logo.png
-
 # License of this project
 license: "APACHE2"
 
@@ -23,19 +20,16 @@ copyrights:
 github_repo: cloudposse/github-action-terraform-auto-context
 
 # Badges to display
-#badges:
-#  - name: "Build Status"
-#    image: "https://github.com/cloudposse/build-harness/workflows/docker/badge.svg?branch=master"
-#    url: "https://github.com/cloudposse/build-harness/actions?query=workflow%3Adocker"
-#  - name: "Latest Release"
-#    image: "https://img.shields.io/github/release/cloudposse/build-harness.svg"
-#    url: "https://github.com/cloudposse/build-harness/releases/latest"
-#  - name: "Slack Community"
-#    image: "https://slack.cloudposse.com/badge.svg"
-#    url: "https://slack.cloudposse.com"
-#  - name: "Discourse Forum"
-#    image: "https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg"
-#    url: "https://ask.sweetops.com/"
+badges:
+  - name: "Build Status"
+    image: "https://github.com/cloudposse/build-harness/workflows/docker/badge.svg?branch=master"
+    url: "https://github.com/cloudposse/build-harness/actions?query=workflow%3Adocker"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/build-harness.svg"
+    url: "https://github.com/cloudposse/build-harness/releases/latest"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
 
 related:
   - name: "GitHub Action Auto-format"
@@ -52,28 +46,21 @@ related:
     url: "https://github.com/cloudposse/github-action-validate-codeowners"
 
 # References
-#references:
-#  - name: "Wikipedia - Test Harness"
-#    description: 'The `build-harness` is similar in concept to a "Test Harness"'
-#    url: "https://en.wikipedia.org/wiki/Test_harness"
-
-# Screenshots
-#screenshots:
-#  - name: "demo"
-#    description: "Example of using the `build-harness` to build a docker image"
-#    url: "https://cdn.rawgit.com/cloudposse/build-harness/master/docs/demo.svg"
+references:
+  - name: "GitHub Action - Checkout"
+    description: 'Checks out a repository under $GITHUB_WORKSPACE, so a workflow can access it'
+    url: "https://github.com/actions/checkout"
+  - name: "Create Pull Request"
+    description: 'Take all unpushed commits and modifications to the code and put it on a new branch with a PR already made'
+    url: "https://github.com/peter-evans/create-pull-request"
 
 # Short description of this project
 description: |-
   Github Action Terraform Auto-context compares the `context.tf` file in the calling repo against the most recent version published by Cloud Posse.
   If the repo version is found to be out of date, a pull request is opened to update it.
-# Introduction to the project
-#introduction: |-
-#  This is an introduction.
 
-# How to use this project
 usage: |-
-  Copy the `sample_workflow_file.yaml` file from this repository into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
+  Copy this repository's `.github/workflows/auto-context.yml` file into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
   This will cause Auto-context functionality to execute daily at the time specified by the `cron` option (all times are UTC).
 
   If you'd like to modify the schedule of the Auto-context action, you can follow the standard [cron](https://en.wikipedia.org/wiki/Cron) syntax, as detailed below:
@@ -94,24 +81,14 @@ usage: |-
   ```
 
 # Example usage
-#examples: |-
-#  Here are some real world examples:
-#  - [`github-authorized-keys`](https://github.com/cloudposse/github-authorized-keys/) - A Golang project that leverages `docker/%`, `go/%`, `travis/%` targets
-#  - [`charts`](https://github.com/cloudposse/charts/) - A collection of Helm Charts that leverages `docker/%` and `helm/%` targets
-#  - [`bastion`](https://github.com/cloudposse/bastion/) - A docker image that leverages `docker/%` and `bash/lint` targets
-#  - [`terraform-null-label`](https://github.com/cloudposse/terraform-null-label/) - A terraform module that leverages `terraform/%` targets
+examples: |-
+  Here are some real world examples:
+  - [`github-action-auto-context`](https://github.com/cloudposse/github-action-auto-context/.github/workflows/auto-context.yml) - Cloud Posse's self-testing Auto-context GitHub Action
 
 # How to get started quickly
-#quickstart: |-
-#  Here's how to get started...
-#  1. `git clone https://github.com/cloudposse/build-harness.git` to pull down the repository
-#  2. `make init` to initialize the [`build-harness`](https://github.com/cloudposse/build-harness/)
-
-# Other files to include in this README from the project folder
-#include:
-#  - "docs/targets.md"
-#  - "docs/extensions.md"
-#  - "docs/auto-init.md"
+quickstart: |-
+  Here's how to get started...
+  1. Copy this repository's `.github/workflows/auto-context.yml` file into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
 
 # Contributors to this project
 contributors:

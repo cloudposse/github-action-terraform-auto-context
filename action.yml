@@ -37,9 +37,9 @@ runs:
             else
               # updating context.tf and documentation
               echo "context.tf file has changed. Update examples and rebuild README.md and commit everything to a new ${BRANCH_NAME} branch."
-              make init
+              #make init
               make github/init/context.tf
-              make readme/build
+              #make readme/build
               # moving to new branch to commit changes
               git checkout -b ${BRANCH_NAME}
               # committing changes

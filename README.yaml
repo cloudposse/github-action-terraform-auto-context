@@ -21,12 +21,12 @@ github_repo: cloudposse/github-action-terraform-auto-context
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://github.com/cloudposse/build-harness/workflows/docker/badge.svg?branch=master"
-    url: "https://github.com/cloudposse/build-harness/actions?query=workflow%3Adocker"
+  - name: "Test Status"
+    image: "https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=review-branch"
+    url: "https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context"
   - name: "Latest Release"
-    image: "https://img.shields.io/github/release/cloudposse/build-harness.svg"
-    url: "https://github.com/cloudposse/build-harness/releases/latest"
+    image: "https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg"
+    url: "https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest"
   - name: "Slack Community"
     image: "https://slack.cloudposse.com/badge.svg"
     url: "https://slack.cloudposse.com"

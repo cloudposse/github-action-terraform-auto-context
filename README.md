@@ -2,7 +2,7 @@
 <!-- markdownlint-disable -->
 # GitHub Action Terraform Auto-context
 
- [![Build Status](https://github.com/cloudposse/build-harness/workflows/docker/badge.svg?branch=master)](https://github.com/cloudposse/build-harness/actions?query=workflow%3Adocker) [![Latest Release](https://img.shields.io/github/release/cloudposse/build-harness.svg)](https://github.com/cloudposse/build-harness/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Test Status](https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=review-branch)](https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context) [![Latest Release](https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg)](https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]
@@ -30,7 +30,7 @@
 
 -->
 
-Github Action Terraform Auto-context compares the `context.tf` file in the calling repo against the most recent version published by Cloud Posse.
+This is a Github Action that will automatically update the `context.tf` file in the calling repo against the most recent version published by Cloud Posse. If a new version is detected, a Pull Request will be opened to update it.
 If the repo version is found to be out of date, a pull request is opened to update it.
 
 ---

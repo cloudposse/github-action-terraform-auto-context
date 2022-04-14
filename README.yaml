@@ -56,7 +56,7 @@ references:
 
 # Short description of this project
 description: |-
-  Github Action Terraform Auto-context compares the `context.tf` file in the calling repo against the most recent version published by Cloud Posse.
+  This is a Github Action that will automatically update the `context.tf` file in the calling repo against the most recent version published by Cloud Posse. If a new version is detected, a Pull Request will be opened to update it.
   If the repo version is found to be out of date, a pull request is opened to update it.
 
 usage: |-

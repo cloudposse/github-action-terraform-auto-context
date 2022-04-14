@@ -2,7 +2,7 @@
 <!-- markdownlint-disable -->
 # GitHub Action Terraform Auto-context
 
- [![Test Status](https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=review-branch)](https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context) [![Latest Release](https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg)](https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+ [![Test Status](https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=main)](https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context) [![Latest Release](https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg)](https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 <!-- markdownlint-restore -->
 
 [![README Header][readme_header_img]][readme_header_link]

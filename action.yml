@@ -33,7 +33,7 @@ runs:
         HOST_REPO: ${{ github.repository }}
 
     - name: Create Pull Request
-      uses: cloudposse/actions/github/create-pull-request@0.30.0
+      uses: peter-evans/create-pull-request@v4.0.2
       with:
         token: ${{ inputs.token }}
         committer: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'

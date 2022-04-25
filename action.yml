@@ -12,6 +12,10 @@ inputs:
     decription: "Username to write commits under"
     required: false
     default: "cloudpossebot"
+  bot-email:
+    decription: "Email to write commits under"
+    required: false
+    default: "11232728+cloudpossebot@users.noreply.github.com"
 runs:
   using: "composite"
   steps:
@@ -32,8 +36,8 @@ runs:
       uses: cloudposse/actions/github/create-pull-request@0.30.0
       with:
         token: ${{ inputs.token }}
-        committer: '${{ inputs.bot-name }} <11232728+${{ inputs.bot-name }}@users.noreply.github.com>'
-        author: '${{ inputs.bot-name }} <11232728+${{ inputs.bot-name }}@users.noreply.github.com>'
+        committer: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
+        author: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
         commit-message: Update context.tf from origin source
         title: Update context.tf
         body: |-

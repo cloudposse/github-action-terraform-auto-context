@@ -54,8 +54,8 @@ runs:
       uses: peter-evans/create-pull-request@v4.0.2
       with:
         token: ${{ inputs.token }}
-        committer: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
-        author: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
+        committer: '${{ inputs.bot-name }} <${{steps.bot-email-set.outputs.bot-email}}>'
+        author: '${{ inputs.bot-name }} <${{steps.bot-email-set.outputs.bot-email}}>'
         commit-message: Update context.tf from origin source
         title: Update context.tf
         body: |-

@@ -12,3 +12,4 @@ jobs:
     - uses: cloudposse/github-action-terraform-auto-context@improve-bot-email-default
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        bot-email: "placeholder"

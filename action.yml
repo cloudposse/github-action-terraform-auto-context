@@ -1,0 +1,53 @@
+name: "github-action-auto-context"
+description: "Automaticaly open a pull request to update context.tf for Terraform projects"
+inputs:
+  branch-name:
+    description: "Name of branch to commit updated context.tf to"
+    required: false
+    default: "auto-update/context.tf"
+  token:
+    description: "Token for authenticating to GitHub API server. No special permissions needed."
+    required: true
+  bot-name:
+    decription: "Username to write commits under"
+    required: false
+    default: "cloudpossebot"
+  bot-email:
+    decription: "Email to write commits under"
+    required: false
+    default: "11232728+cloudpossebot@users.noreply.github.com"
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout commit"
+      uses: actions/checkout@v2
+
+    - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
+      id: update
+      uses: docker://cloudposse/build-harness:latest
+      with:
+        entrypoint: /github/workspace/context_update.sh
+      env:
+        BRANCH_NAME: ${{ inputs.branch-name }}
+        BOT_NAME: ${{ inputs.bot-name }}
+        HOST_REPO: ${{ github.repository }}
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4.0.2
+      with:
+        token: ${{ inputs.token }}
+        committer: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
+        author: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
+        commit-message: Update context.tf from origin source
+        title: Update context.tf
+        body: |-
+          ## what
+          This is an auto-generated PR that updates the `context.tf` file to the latest version from `cloudposse/terraform-null-label`
+          ## why
+          To support all the features of the `context` interface.
+        branch: auto-update/context.tf
+        base: ${{ github.event.repository.default_branch }}
+        delete-branch: true
+        labels: |
+          auto-update
+          context

@@ -15,10 +15,18 @@ inputs:
   bot-email:
     decription: "Email to write commits under"
     required: false
-    default: "11232728+cloudpossebot@users.noreply.github.com"
 runs:
   using: "composite"
   steps:
+    - name: "Set bot-email to cloudpossebot default, if none specified"
+      if: inputs.bot-email == ''
+      shell: bash
+      run: |
+        bot_id=$(curl -sSL 'https://api.github.com/users/cloudpossebot' | jq .id)
+        bot_email=${bot_id}+cloudpossebot@users.noreply.github.com
+        echo $bot_email
+        echo "::set-output name=bot-email::${bot_email}"
+
     - name: "Checkout commit"
       uses: actions/checkout@v2
 

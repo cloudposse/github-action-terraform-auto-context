@@ -1,0 +1,33 @@
+name: "auto-context-reusable"
+on:
+  workflow_call:
+    inputs:
+      branch-name:
+        description: "Name of branch to commit updated context.tf to"
+        type: string
+        required: false
+        default: "auto-update/context.tf"
+      bot-name:
+        decription: "Username to write commits under"
+        type: string
+        required: false
+        default: "cloudpossebot"
+      bot-email:
+        decription: "Email to write commits under"
+        type: string
+        required: false
+    secrets:
+      token:
+        required: false
+        default: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  auto-context:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cloudposse/github-action-terraform-auto-context@improve-bot-email-default
+      with:
+        branch-name: ${{ inputs.branch-name }}
+        bot-name: ${{ inputs.bot-name }}
+        bot-email: ${{ inputs.bot-email }}
+        token: ${{ secrets.token }}

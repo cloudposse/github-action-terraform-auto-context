@@ -31,12 +31,6 @@ runs:
         echo $bot_email
         echo "::set-output name=bot-email::${bot_email}"
 
-    - name: "Debugging"
-      shell: bash
-      run: |
-        echo "inputs.bot-email: ${{ inputs.bot-email}}"
-        echo "steps.bot-email-set.outputs.bot-email: ${{ steps.bot-email-set.outputs.bot-email }}"
-
     - name: "Checkout commit"
       uses: actions/checkout@v2
 
@@ -47,7 +41,6 @@ runs:
         entrypoint: /github/workspace/context_update.sh
       env:
         BRANCH_NAME: ${{ inputs.branch-name }}
-        BOT_NAME: ${{ inputs.bot-name }}
         HOST_REPO: ${{ github.repository }}
 
     - name: Create Pull Request

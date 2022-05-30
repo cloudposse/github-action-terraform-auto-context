@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "HOST_REPO: ${HOST_REPO}"
 if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv ./test/context.tf .
 fi

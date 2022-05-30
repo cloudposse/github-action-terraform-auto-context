@@ -7,7 +7,7 @@ on:
 
 jobs:
   auto-context:
-    uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable@improve-bot-email-default
+    uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable.yml@improve-bot-email-default
     with:
       # Name of branch to commit updated context.tf to
       branch-name: auto-update/context.tf

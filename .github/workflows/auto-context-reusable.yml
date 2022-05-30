@@ -30,4 +30,5 @@ jobs:
         branch-name: ${{ inputs.branch-name }}
         bot-name: ${{ inputs.bot-name }}
         bot-email: ${{ inputs.bot-email }}
+      secrets:
         token: ${{ secrets.token }}

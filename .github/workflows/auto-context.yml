@@ -7,11 +7,11 @@ on:
 
 jobs:
   auto-context:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable@improve-bot-email-default
-      with:
-        branch-name: ${{ inputs.branch-name }}
-        bot-name: ${{ inputs.bot-name }}
-        bot-email: ${{ inputs.bot-email }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+    uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable@improve-bot-email-default
+    with:
+      # Name of branch to commit updated context.tf to
+      branch-name: auto-update/context.tf
+      # GitHub username to use for automated commits (should be a real GitHub user)
+      bot-name: cloudpossebot
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

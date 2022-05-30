@@ -4,6 +4,7 @@ if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv ./test/context.tf .
 fi
 
+git config --global --add safe.directory /github/workspace
 if [[ -f context.tf ]]; then
   echo "Discovered existing context.tf!"
   echo "Checking for pre-existing ${BRANCH_NAME} branch."

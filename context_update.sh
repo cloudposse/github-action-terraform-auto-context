@@ -3,7 +3,7 @@
 echo "HOST_REPO: ${HOST_REPO}"
 if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv ./test/context.tf .
-  echo "Moved context.f to top-level directory."
+  echo "Moved context.tf to top-level directory."
 fi
 
 git config --global --add safe.directory /github/workspace
@@ -14,7 +14,7 @@ if [[ -f context.tf ]]; then
     echo "Branch ${BRANCH_NAME} not found."
     echo "Fetching most recent version of context.tf to see if there is an update."
     curl -o context.tf -fsSL https://raw.githubusercontent.com/cloudposse/terraform-null-label/master/exports/context.tf
-    if git diff --no-patch --exit-code context.tf; then
+    if [[ $(git diff --no-patch --exit-code context.tf) ]]; then
       echo "No changes detected! Exiting the job..."
     else
       # updating context.tf

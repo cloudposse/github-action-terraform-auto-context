@@ -18,13 +18,13 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: "Set bot-email to cloudpossebot default if inputs.bot-email not provided"
+    - name: "Set bot-email to GitHub default if inputs.bot-email not provided"
       id: bot-email-set
       shell: bash
       run: |
         if [ -z ${{ inputs.bot-email }} ]; then
-          bot_id=$(curl -sSL 'https://api.github.com/users/cloudpossebot' | jq .id)
-          bot_email=${bot_id}+cloudpossebot@users.noreply.github.com
+          bot_id=$(curl -sSL 'https://api.github.com/users/${{ inputs.bot-name }}' | jq .id)
+          bot_email=${bot_id}+${{ inputs.bot-name }}@users.noreply.github.com
         else
           bot_email=${{ inputs.bot-email }}
         fi

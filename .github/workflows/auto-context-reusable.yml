@@ -8,12 +8,12 @@ on:
         required: false
         default: "auto-update/context.tf"
       bot-name:
-        decription: "Username to write commits under"
+        description: "Username to write commits under"
         type: string
         required: false
         default: "cloudpossebot"
       bot-email:
-        decription: "Email to write commits under"
+        description: "Email to write commits under"
         type: string
         required: false
     secrets:

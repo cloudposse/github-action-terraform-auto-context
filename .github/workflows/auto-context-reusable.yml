@@ -24,7 +24,7 @@ jobs:
   auto-context:
     runs-on: ubuntu-latest
     steps:
-    - uses: cloudposse/github-action-terraform-auto-context@improve-bot-email-default
+    - uses: cloudposse/github-action-terraform-auto-context@main
       with:
         branch-name: ${{ inputs.branch-name }}
         bot-name: ${{ inputs.bot-name }}

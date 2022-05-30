@@ -33,4 +33,5 @@ fi
 
 if [[ "$HOST_REPO" == "cloudposse/github-action-terraform-auto-context" ]]; then
   mv context.tf ./test/
+  echo "Moved context.tf back to ./test/ directory."
 fi

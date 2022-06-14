@@ -24,7 +24,7 @@ jobs:
   auto-context:
     runs-on: ubuntu-latest
     steps:
-    - uses: cloudposse/github-action-terraform-auto-context@main
+    - uses: cloudposse/github-action-terraform-auto-context@0.2.0
       with:
         branch-name: ${{ inputs.branch-name }}
         bot-name: ${{ inputs.bot-name }}

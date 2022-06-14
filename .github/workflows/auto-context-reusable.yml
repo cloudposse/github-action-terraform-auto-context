@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       branch-name:
-        description: "Name of branch to commit updated context.tf to"
+        description: "Name of branch where the updated context.tf will be added"
         type: string
         required: false
         default: "auto-update/context.tf"

@@ -13,7 +13,7 @@ on:
         required: false
         default: "cloudpossebot"
       bot-email:
-        description: "Email Address associated with the GitHub user the action will use to commit code"
+        description: "Email address associated with the GitHub user the action will use to commit code"
         type: string
         required: false
     secrets:

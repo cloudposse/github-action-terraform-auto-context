@@ -7,6 +7,9 @@ on:
 
 jobs:
   auto-context:
+    # For development reasons, this action is pinned to the `main` branch.
+    # However, we recommend that you choose a specific release to pin to.
+    # Consult https://github.com/cloudposse/github-action-auto-context/releases for a list of available releases.
     uses: cloudposse/github-action-terraform-auto-context/.github/workflows/auto-context-reusable.yml@main
     with:
       # Name of branch to commit updated context.tf to

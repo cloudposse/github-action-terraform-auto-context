@@ -96,6 +96,7 @@ examples: |-
 quickstart: |-
   Here's how to get started...
   1. Copy this repository's `.github/workflows/auto-context.yml` file into the `.github/workflows` folder of the repository to which you'd like to add Terraform Auto-context functionality.
+  2. (Optional) Update the `main` pin inside `auto-context.yml` to a fixed version. Consult https://github.com/cloudposse/github-action-auto-context/releases for a list of available versions.
 
 # Contributors to this project
 contributors:

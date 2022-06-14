@@ -15,10 +15,21 @@ inputs:
   bot-email:
     decription: "Email to write commits under"
     required: false
-    default: "11232728+cloudpossebot@users.noreply.github.com"
 runs:
   using: "composite"
   steps:
+    - name: "Set bot-email to GitHub default if inputs.bot-email not provided"
+      id: bot-email-set
+      shell: bash
+      run: |
+        if [ -z ${{ inputs.bot-email }} ]; then
+          bot_id=$(curl -sSL 'https://api.github.com/users/${{ inputs.bot-name }}' | jq .id)
+          bot_email=${bot_id}+${{ inputs.bot-name }}@users.noreply.github.com
+        else
+          bot_email=${{ inputs.bot-email }}
+        fi
+        echo "::set-output name=bot-email::${bot_email}"
+
     - name: "Checkout commit"
       uses: actions/checkout@v2
 
@@ -29,15 +40,14 @@ runs:
         entrypoint: /github/workspace/context_update.sh
       env:
         BRANCH_NAME: ${{ inputs.branch-name }}
-        BOT_NAME: ${{ inputs.bot-name }}
         HOST_REPO: ${{ github.repository }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4.0.2
       with:
         token: ${{ inputs.token }}
-        committer: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
-        author: '${{ inputs.bot-name }} <${{inputs.bot-email}}>'
+        committer: '${{ inputs.bot-name }} <${{steps.bot-email-set.outputs.bot-email}}>'
+        author: '${{ inputs.bot-name }} <${{steps.bot-email-set.outputs.bot-email}}>'
         commit-message: Update context.tf from origin source
         title: Update context.tf
         body: |-

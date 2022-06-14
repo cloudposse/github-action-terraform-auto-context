@@ -8,7 +8,7 @@ on:
         required: false
         default: "auto-update/context.tf"
       bot-name:
-        description: "Username to write commits under"
+        description: "GitHub username the action will use to commit code"
         type: string
         required: false
         default: "cloudpossebot"

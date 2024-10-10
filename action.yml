@@ -28,7 +28,7 @@ runs:
         else
           bot_email=${{ inputs.bot-email }}
         fi
-        echo "::set-output name=bot-email::${bot_email}"
+        echo "bot-email=${bot_email}" >> $GITHUB_OUTPUT
 
     - name: "Checkout commit"
       uses: actions/checkout@v2

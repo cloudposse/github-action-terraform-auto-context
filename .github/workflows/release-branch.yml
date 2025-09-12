@@ -1,6 +1,10 @@
----
-name: release-branch
+name: Branch
 on:
+  pull_request:
+    branches:
+      - main
+      - release/**
+    types: [opened, synchronize, reopened]
   push:
     branches:
       - main
@@ -12,9 +16,11 @@ on:
       - 'test/**'
       - 'README.md'
 
-permissions: {}
+permissions:
+  contents: write
+  actions: write
 
 jobs:
-  terraform-module:
-    uses: cloudposse/github-actions-workflows-terraform-module/.github/workflows/release-branch.yml@main
+  github-action:
+    uses: cloudposse/.github/.github/workflows/shared-github-action.yml@main
     secrets: inherit

@@ -9,11 +9,11 @@ inputs:
     description: "Token for authenticating to GitHub API server. No special permissions needed."
     required: true
   bot-name:
-    decription: "Username to write commits under"
+    description: "Username to write commits under"
     required: false
     default: "cloudpossebot"
   bot-email:
-    decription: "Email to write commits under"
+    description: "Email to write commits under"
     required: false
 runs:
   using: "composite"

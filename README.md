@@ -4,7 +4,7 @@
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/github-action-terraform-auto-context/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
 
 
-<p align="right"><a href="https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context"><img src="https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=main" alt="Test Status"/></a><a href="https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg" alt="Latest Release"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/badge.svg" alt="Slack Community"/></a>
+<p align="right"><a href="https://github.com/cloudposse/github-action-terraform-auto-context/actions?query=workflow%3Aauto-context"><img src="https://github.com/cloudposse/github-action-terraform-auto-context/workflows/auto-context/badge.svg?branch=main" alt="Test Status"/></a><a href="https://github.com/cloudposse/github-action-terraform-auto-context/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/github-action-terraform-auto-context.svg" alt="Latest Release"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/badge.svg" alt="Slack Community"/></a><a href="https://cloudposse.com/support/"><img src="https://img.shields.io/badge/Get_Support-success.svg?style=for-the-badge" alt="Get Support"/></a>
 
 </p>
 <!-- markdownlint-restore -->
@@ -100,15 +100,32 @@ Here are some real world examples:
 
 
 
-## Inputs
 <!-- markdownlint-disable -->
-| Name | Description | Default | Required |
-|------|-------------|---------|----------|
-| bot-email | Email to write commits under | N/A | false |
-| bot-name | Username to write commits under | cloudpossebot | false |
-| branch-name | Name of branch to commit updated context.tf to | auto-update/context.tf | false |
-| token | Token for authenticating to GitHub API server. No special permissions needed. | N/A | true |
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+No modules.
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
 <!-- markdownlint-restore -->
+
 
 
 
@@ -171,7 +188,8 @@ For additional context, refer to some of these links.
 > - **Customer Workshops.** Engage with our team in weekly workshops, gaining insights and strategies to continuously improve and innovate.
 >
 > <a href="https://cpco.io/commercial-support?utm_source=github&utm_medium=readme&utm_campaign=cloudposse/github-action-terraform-auto-context&utm_content=commercial_support"><img alt="Request Quote" src="https://img.shields.io/badge/request%20quote-success.svg?style=for-the-badge"/></a>
-> </details>
+> 
+</details>
 
 ## ✨ Contributing
 

@@ -31,7 +31,7 @@ runs:
         echo "::set-output name=bot-email::${bot_email}"
 
     - name: "Checkout commit"
-      uses: actions/checkout@v2
+      uses: actions/checkout@v7
 
     - name: "Update context.tf, checkout new branch, and commit new context.tf, if needed"
       id: update
@@ -43,7 +43,7 @@ runs:
         HOST_REPO: ${{ github.repository }}
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ inputs.token }}
         committer: '${{ inputs.bot-name }} <${{steps.bot-email-set.outputs.bot-email}}>'
